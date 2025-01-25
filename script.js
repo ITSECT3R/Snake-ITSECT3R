@@ -1,8 +1,10 @@
 const playBoard = document.querySelector(".play-board");
+const store = document.querySelector(".store");
 const scoreElement = document.querySelector(".score");
+const goldElement = document.querySelector(".gold");
 const highScoreElement = document.querySelector(".high-score");
 const pauseButton = document.querySelector(".pause-button");
-
+const storeBtn = document.querySelector(".store-btn");
 
 let gameOver = false;
 let foodX, foodY;
@@ -11,6 +13,7 @@ let snakeBody = [];
 let velocityX = 0,velocityY = 0;
 let setIntervalId;
 let score = 0;
+let gold = 0;
 let isPaused = false;
 let directionQueue = [];
 const MAX_QUEUE_LENGTH = 2;
@@ -37,6 +40,7 @@ const resetGame = () => {
     velocityY = 0;
     snakeBody = [];
     score = 0;
+    scoreElement.innerHTML = `Score: ${score}`;
     gameOver = false;
     directionQueue = []; // Clear the direction queue
     changeFoodPosition();
@@ -53,6 +57,11 @@ const togglePause = () => {
         setIntervalId = setInterval(initGame, 125);
         pauseButton.textContent = "Pause"; // Changes button text
     }
+}
+
+const toggleStore = () => {
+    store.classList.toggle("hidden");
+    storeBtn.textContent = store.classList.contains("hidden") ? "Store" : "Close Store";
 }
 
 const changeDirection = (e) => {
@@ -136,10 +145,12 @@ const initGame = () => {
         changeFoodPosition();
         snakeBody.push([snakeX, snakeY])
         score++;
+        gold++;
 
         highScore = score >= highScore ? score : highScore;
         localStorage.setItem("high-score", highScore );
         scoreElement.innerHTML = `Score: ${score}`;
+        goldElement.innerHTML = `Gold: ${gold}`;
 
         highScoreElement.innerHTML = `High Score: ${highScore}`
     }
@@ -175,3 +186,4 @@ document.addEventListener("keydown", (e) => {
         togglePause();
     }
 });
+storeBtn.addEventListener("click", toggleStore);
