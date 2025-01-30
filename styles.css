@@ -2,12 +2,14 @@
     --background-color: #140039;
     --wrapper-bg-color: #293447;
     --store-background-color: #8a5c00;
+    --background-color-store-items: #19dc1c;
     --play-board-bg-color: #212837;
     --food-color: #ff003d;
     --snake-head-color: #60cbff;
     --text-color: #b8c6dc;
     --button-bg-color: #5100ff;
     --button-hover-bg-color: #d50032;
+    --buttons-store-hover-bg-color: #fff700;
     --button-text-color: #fff;
 }
 
@@ -106,5 +108,65 @@ h1,h2,p{
     text-align: center;
     padding: 17px 0;
     border-radius: 10px 10px 0 0;
+}
+
+.h3-upg-sections{
+    background-color: var(--buttons-store-hover-bg-color);
+    color: var(--button-bg-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.store-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.store-item{
+    width: 30%;
+    background-color: var(--background-color-store-items);
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.store-item-details{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.store-item-details h3{
+    margin-bottom: 7px;
+}
+
+.store-item-btn{
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    margin-top: auto;
+}
+
+.store-item-btn:hover{
+    background-color: var(--buttons-store-hover-bg-color);
+    color: var(--background-color);
+}
+
+.hidden{
+    display: none;
 }
 
